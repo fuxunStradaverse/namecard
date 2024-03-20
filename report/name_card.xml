@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <template id="report_name_id_card">
+        <t t-call="web.html_container">
+            <!--            this line print multiple line of record, in order print a nice report put this line out side of this code: <t t-call="web.external_layout">-->
+            <t t-foreach="docs" t-as="o">
+<!--                <t t-call="web.external_layout">-->
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="text-center text-decoration-underline">NAME CARD REQUISITION FORM</h5>
+                                <table class="table table-borderless">
+                                    <tr>
+                                        <td width="20%">
+                                            <p>Staff Name</p>
+                                        </td>
+                                        <td width="1%">
+                                            <div>:</div>
+                                        </td>
+                                        <td width="79%">
+                                            <span class="text-decoration-underline mx-2" t-field="o.staff" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Company</p>
+                                        </td>
+                                        <td>
+                                            <div>:</div>
+                                        </td>
+                                        <td>
+                                            <div for="SISB">
+                                                <input type="checkbox" id="SISB" name="SISB" value="True"
+                                                       t-att-checked="o.company_selection == 'SISB'"/>
+                                                SIGNATURE INTERNATIONAL
+                                            </div>
+                                            <br/>
+                                            <div for="SCSB">
+                                                <input type="checkbox" id="SCSB" name="SCSB" value="True"
+                                                       t-att-checked="o.company_selection == 'SCSB'"/>
+                                                SIGNATURE CABINET SDN BHD
+                                            </div>
+                                            <br/>
+                                            <div for="SMSB">
+                                                <input type="checkbox" id="SMSB" name="SMSB" value="True"
+                                                       t-att-checked="o.company_selection == 'SMSB'"/>
+                                                SIGNATURE MANUFACTURING SDN BHD
+                                            </div>
+                                            <br/>
+                                            <div for="SKSB">
+                                                <input type="checkbox" id="SKSB" name="SKSB" value="True"
+                                                       t-att-checked="o.company_selection == 'SKSB'"/>
+                                                SIGNATURE KITCHEN SDN BHD
+                                            </div>
+                                            <br/>
+                                            <div for="SKSB">
+                                                <input type="checkbox" id="SOSB" name="SOSB" value="True"
+                                                       t-att-checked="o.company_selection == 'SOSB'"/>
+                                                SIGNATURE OBICORP SDN BHD
+                                            </div>
+                                            <br/>
+                                            <div for="SASB">
+                                                <input type="checkbox" id="SASB" name="SASB" value="True"
+                                                       t-att-checked="o.company_selection == 'SASB'"/>
+                                                SIGNATURE ALUMINIUM SDN BHD
+                                            </div>
+                                            <br/>
+                                            <div for="KUBIQ">
+                                                <input type="checkbox" id="KUBIQ" name="KUBIQ" value="True"
+                                                       t-att-checked="o.company_selection == 'KUBIQ'"/>
+                                                KUBIQ SDN BHD
+                                            </div>
+                                            <br/>
+                                            <div for="KUBIQ">
+                                                <input type="checkbox" id="Others" name="Others" value="True"
+                                                       t-att-checked="o.company_selection == 'Others'"/>
+                                                OTHERS:
+                                                <span class="text-decoration-underline mx-2" t-field="o.other_company"/>
+                                            </div>
+                                        </td>
+                                        <tr>
+                                            <td>
+                                                <p>HQ / Branch</p>
+                                            </td>
+                                            <td>
+                                                <div>:</div>
+                                            </td>
+                                            <td>
+                                                <span class="text-decoration-underline mx-2" t-field="o.branch" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Full Address</p>
+                                            </td>
+                                            <td>
+                                                <div>:</div>
+                                            </td>
+                                            <td>
+                                                <span class="text-decoration-underline mx-2" t-field="o.address" />
+                                            </td>
+                                        </tr>
+                                    </tr>
+                                </table>
+                                <table class="name" style="border: 1px solid black;">
+                                    <tr>
+                                        <td width="30%">
+                                            <p>Name to be appear on card:</p>
+                                        </td>
+                                        <td width="70%" class="text-center align-middle">
+                                            <div class="text-decoration-underline" t-field="o.card_name" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Position to be appear on the card:</p>
+                                        </td>
+                                        <td class="text-center align-middle">
+                                            <div class="text-decoration-underline" t-field="o.card_position" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Hand phone No.:</p>
+                                        </td>
+                                        <td class="text-center align-middle">
+                                            <div class="text-decoration-underline" t-field="o.card_mobile" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>General Line:</p>
+                                        </td>
+                                        <td class="text-center align-middle">
+                                            <div class="text-decoration-underline" t-field="o.card_general_line" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>DID :</p>
+                                        </td>
+                                        <td class="text-center align-middle">
+                                            <div class="text-decoration-underline" t-field="o.card_did" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Fax No. :</p>
+                                        </td>
+                                        <td class="text-center align-middle">
+                                            <div class="text-decoration-underline" t-field="o.card_fax_no" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Email Address :</p>
+                                        </td>
+                                        <td class="text-center align-middle">
+                                            <div class="text-decoration-underline" t-field="o.card_email" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Website (If different from HQ) :</p>
+                                        </td>
+                                        <td class="text-center align-middle">
+                                            <div class="text-decoration-underline" t-field="o.card_website" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Quantity requested : (Please Circle)</p>
+                                        </td>
+                                        <td class="text-center align-middle">
+                                            <div class="text-bold">200pcs / 400pcs</div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="py-4">
+                                    <table class="signature table-borderless" style="width:100%;">
+                                    <tr>
+                                        <td width="33%">
+                                            <p class="mb-4">Staff Signature:</p>
+                                            <hr style="border-top: 1px dotted black;" />
+                                            <p>Name: </p>
+                                            <p>Date: </p>
+                                        </td>
+                                        <td width="33%">
+                                        </td>
+                                        <td width="34%">
+                                            <p class="mb-4">Verified By Hr Department</p>
+                                            <hr style="border-top: 1px dotted black;" />
+                                            <p>Name: </p>
+                                            <p>Date: </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                                    <table class="signature table-borderless" style="width:100%;">
+                                    <tr>
+                                        <td width="33%">
+                                            <p class="mb-4">HOD / MANAGER APPROVAL</p>
+                                            <hr />
+                                            <p>Name: </p>
+                                            <p>Date: </p>
+                                        </td>
+                                        <td width="33%">
+                                        </td>
+                                        <td width="34%">
+                                            <table style="border: 1px solid black;width: 100%;">
+                                                <tr>
+                                                    <td>
+                                                        <p class="mb-4">Office Use Only:</p>
+                                                        <p>Received By:</p>
+                                                        <hr style="border-top: 1px dotted black;" />
+                                                        <div>Received </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <p>Date: <div class="text-underline"></div></p>
+                                        </td>
+                                    </tr>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

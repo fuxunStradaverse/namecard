@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Main Menu (APP menu) -->
+    <menuitem id="menu_namecard_root"
+              name="Name Card Request"
+              sequence="0"/>
+
+    <menuitem id="menu_pdf_practical_master"
+              name="PDF Practical"
+              parent="menu_namecard_root"
+              sequence="100"/>
+</odoo>

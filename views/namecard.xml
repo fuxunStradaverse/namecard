@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_namecard_request_form" model="ir.ui.view">
+        <field name="name">namecard.request.form</field>
+        <field name="model">namecard.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" nolabel="1" options="{'clickable' : '1'}" statusbar_visible="draft, submitted, completed, rejected"/>
+                    <button name="action_submit" string="Submit" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <button name="action_complete" string="Complete" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'submitted')]}"/>
+                    <button name="action_reject" string="Reject" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'submitted')]}"/>
+
+<!--                    <button name="cancel_patient_mster" string="Cancel" type="object" class="oe_highlight"-->
+<!--                            attrs="{'invisible': [('stage', 'not in', ['in_progress', 'sent_email', 'approved'])]}"/>-->
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="staff"/>
+                        <field name="company_selection"/>
+                        <field name="other_company"/>
+                        <field name="branch"/>
+                        <field name="address"/>
+                        <field name="card_name"/>
+                        <field name="card_position"/>
+                        <field name="card_mobile"/>
+                        <field name="card_general_line" />
+                    </group>
+                    <group>
+                        <field name="card_did"/>
+                        <field name="card_fax_no"/>
+                        <field name="card_email"/>
+                        <field name="card_website"/>
+                        <field name="card_quantity"/>
+                        <field name="submitted_by"/>
+                        <field name="submitted_date" readonly="1"/>
+                        <field name="completed_by"/>
+                        <field name="completed_date" readonly="1"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_namecard_request_tree" model="ir.ui.view">
+        <field name="name">namecard.request.tree</field>
+        <field name="model">namecard.request</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="1"/>
+                <field name="staff"/>
+                <field name="company_selection"/>
+                <field name="other_company"/>
+                <field name="branch"/>
+                <field name="address"/>
+                <field name="card_name"/>
+                <field name="card_position"/>
+                <field name="card_mobile"/>
+                <field name="card_general_line" />
+                <field name="card_did"/>
+                <field name="card_fax_no"/>
+                <field name="card_email"/>
+                <field name="card_website"/>
+                <field name="card_quantity"/>
+                <field name="submitted_by"/>
+                <field name="submitted_date" readonly="1"/>
+                <field name="completed_by"/>
+                <field name="completed_date" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_namecard_request_search" model="ir.ui.view">
+        <field name="name">namecard.request.search</field>
+        <field name="model">namecard.request</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" filter_domain="['|','|','|',('name', 'ilike', self),('staff', 'ilike', self), ('branch', 'ilike', self)]"/>
+                <field name="staff"/>
+                <field name="branch"/>
+                <filter name="filter_company" string="company_selection" domain="[('company_selection', '=', 'SISB')]"/>
+<!--                <separator /> #use to separate filter condition-->
+                <group expand="0" string="Group By">
+                    <filter string="card_quantity" name="group_by_card_quantity" context="{'group_by': 'card_quantity'}"/>
+                </group>
+                <searchpanel>
+                    <field name="company_selection" string="Company Selection" icon="fa-building" select="multi" enable_counters="1"/>
+
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_namecard_request" model="ir.actions.act_window">
+        <field name="name">Name Card Request</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">namecard.request</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create your first Name Card!
+          </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_namecard_request"
+              name="Name Card Request"
+              parent="menu_pdf_practical_master"
+              action="action_namecard_request"
+              sequence="200"/>
+
+</odoo>
